@@ -1,0 +1,36 @@
+Product:
+- id: uuid;
+- name: str;
+- remark: str; # примечание
+- type_id: uuid;
+- subtype_id: uuid;
+- archived: bool;
+
+ProductSubType: # Подтип продукта
+- id: uuid;
+- name: str;
+product_type_id: uuid;
+
+ProductType: #Тип продукта
+- id: uuid;
+- name: str;
+
+ProductToBuy: # продукт для покупки:
+- id: uuid;
+- count: float;
+- unit_price: float; # цена за единицу товара
+- unit_price_with_discount: float # цена за единицу со скидкой
+- product_id: uuid;
+- purchase_id: uuid;
+
+Purchase: # покупка
+- id: uuid;
+user_id: uuid;
+date: datetime;
+cashbox_number: int; # номер кассы
+cashier_name: str; # имя кассира
+total_amount: float; # Итого
+discount_amount: float; # сумма скидки
+without_discount_amount: float; Сумма без скидки
+
+receipt: bytes: # скрин чека
