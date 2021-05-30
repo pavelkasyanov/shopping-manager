@@ -10,7 +10,7 @@ venv_init:
 	@if [ ! -f "$(VENV_DIR)" ]; then \
 		$(PYTHON) -m venv $(VENV_DIR) --prompt $(PROJECT); \
 	fi
-	cp simple_env .env
+	cp .etc/default/simple_env .env
 venv: venv_init
 	$(PI) pip install -r requirements.txt
 

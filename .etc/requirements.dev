@@ -1,2 +1,2 @@
+-r requirements
 pytest==6.2.4
-alembic==1.6.5
