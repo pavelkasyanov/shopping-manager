@@ -1,0 +1,7 @@
+image: alpine
+
+stages:
+  - test
+test:
+  stage: test
+  script: make test
