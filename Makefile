@@ -3,7 +3,7 @@ SRC_DIR := app
 VENV_DIR = .venv
 PYTHON := python
 RUN := . $(VENV_DIR)/bin/activate;
-PY_TEST = pytest
+PY_TEST := $(RUN) pytest
 PIP_C := $(RUN) pip-compile
 PIP_S := $(RUN) pip-sync
 .DEFAULT_GOAL := init
@@ -45,4 +45,4 @@ clean:
 	rm -rf .pytest_cache
 
 test: venv lint
-	$(PI) $(PY_TEST)
+	$(PY_TEST) .
