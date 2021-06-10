@@ -1,3 +1,3 @@
 pytest_plugins = [
-   "shopping_manager.tests.fixtures.client",
+    "app.tests.fixtures.client",
 ]

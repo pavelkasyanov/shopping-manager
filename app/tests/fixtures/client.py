@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from shopping_manager.app import app
+from app.app import app
 
 
 @pytest.fixture
