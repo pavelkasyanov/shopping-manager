@@ -45,4 +45,4 @@ clean:
 	rm -rf .pytest_cache
 
 test: venv lint
-	$(PY_TEST) .
+	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
