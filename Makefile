@@ -1,4 +1,5 @@
 PROJECT = shopping-manager
+SRC_DIR := app
 VENV_DIR = .venv
 PYTHON := python
 RUN := . $(VENV_DIR)/bin/activate;
@@ -28,9 +29,20 @@ install_no_dev:
 	$(PIP_S) .etc/packages
 init: venv
 
+lint: flake black
+
+black:
+	$(RUN) black . --check
+
+flake:
+	$(RUN) flake8 .
+
+fixcode:
+	$(RUN) black .
+
 clean:
 	rm -rf $(VENV_DIR)
 	rm -rf .pytest_cache
 
-test: venv
+test: venv lint
 	$(PI) $(PY_TEST)
