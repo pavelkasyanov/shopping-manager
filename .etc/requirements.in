@@ -4,4 +4,7 @@ pydantic==1.8.2
 starlette==0.14.2
 typing-extensions==3.10.0.0
 click==8.0.1
-fastapi-jwt-auth
+fastapi-jwt-auth==0.5.0
+gino[starlette]
+alembic==1.6.5
+psycopg2==2.9.1

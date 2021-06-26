@@ -25,4 +25,7 @@ def refresh(authorize: AuthJWT = Depends()):
     new_access_token = authorize.create_access_token(subject=current_user)
     return {"access_token": new_access_token}
 
-login
+
+@auth_router.post("/logout")
+def logout(authorize: AuthJWT = Depends()):
+    authorize.jwt_required()

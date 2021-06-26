@@ -6,6 +6,5 @@ from app.app import app
 
 @pytest.fixture
 async def async_client():
-    client = AsyncClient(app=app, base_url="http://test")
-    yield client
-    await client.aclose()
+    with AsyncClient(app=app, base_url="http://test") as client:
+        yield client

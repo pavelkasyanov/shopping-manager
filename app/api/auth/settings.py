@@ -7,6 +7,7 @@ class AuthSettings(BaseModel):
     authjwt_token_location: set = {"cookies"}
     authjwt_cookie_csrf_protect: bool = False
 
+
 @AuthJWT.load_config
 def get_config():
     return AuthSettings()
