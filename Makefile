@@ -12,7 +12,7 @@ venv_init:
 	@if [ ! -f "$(VENV_DIR)" ]; then \
 		$(PYTHON) -m venv $(VENV_DIR) --prompt $(PROJECT); \
 	fi
-	cp .etc/default/simple_env .env
+	cp .etc/default/sample_env .env
 	$(RUN) pip install pip-tools
 
 venv: venv_init install

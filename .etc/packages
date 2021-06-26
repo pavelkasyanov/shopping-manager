@@ -6,6 +6,8 @@
 #
 alembic==1.6.5
     # via -r .etc/requirements.in
+click==8.0.1
+    # via -r .etc/requirements.in
 fastapi==0.65.1
     # via -r .etc/requirements.in
 greenlet==1.1.0
