@@ -8,8 +8,12 @@ alembic==1.6.5
     # via -r .etc/requirements.in
 click==8.0.1
     # via -r .etc/requirements.in
-fastapi==0.65.1
+fastapi-jwt-auth==0.5.0
     # via -r .etc/requirements.in
+fastapi==0.65.1
+    # via
+    #   -r .etc/requirements.in
+    #   fastapi-jwt-auth
 greenlet==1.1.0
     # via sqlalchemy
 mako==1.1.4
@@ -20,6 +24,8 @@ pydantic==1.8.2
     # via
     #   -r .etc/requirements.in
     #   fastapi
+pyjwt==1.7.1
+    # via fastapi-jwt-auth
 python-dateutil==2.8.1
     # via alembic
 python-editor==1.0.4
