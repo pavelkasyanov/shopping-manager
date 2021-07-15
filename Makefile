@@ -46,3 +46,6 @@ clean:
 
 test: venv lint
 	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
+
+include .etc/Makefile_docker
+
