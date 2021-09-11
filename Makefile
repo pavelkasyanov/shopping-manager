@@ -49,5 +49,11 @@ force_test:
 
 test: lint force_test
 
+upgrade_db:
+	$(RUN) $(PYTHON) manage.py migrate
+
+create_migration:
+	$(RUN) $(PYTHON) manage.py migration --msg "$(msg)"
+
 include .etc/Makefile_docker
 

@@ -1,3 +1,5 @@
+import subprocess
+
 import click
 import uvicorn
 
@@ -23,6 +25,17 @@ def cli():
 )
 def runserver(host: str, port: int) -> None:
     uvicorn.run(app, host=host, port=port)
+
+
+@cli.command(help="apply migration")
+def migrate() -> int:
+    return subprocess.call(["alembic", "upgrade", "head"])  # nosec
+
+
+@cli.command(help="Make migration")
+@click.option("-m", "--msg", help="Add a message")
+def migration(msg: str) -> int:
+    return subprocess.call(["alembic", "revision", "-m", f"{msg}"])  # nosec
 
 
 if __name__ == "__main__":

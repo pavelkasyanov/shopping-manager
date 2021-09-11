@@ -1,8 +1,8 @@
 import pytest
 from httpx import AsyncClient
 
-from app.models.view_models.users.create_user_vm import CreateUserViewModel
-from app.services.users.users_service import UsersService
+from app.domain.models.users import CreateUserViewModel
+from app.domain.services.users.users_service import UsersService
 
 
 @pytest.mark.asyncio

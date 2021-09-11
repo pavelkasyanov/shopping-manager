@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from app.database import db
+from app.infrastructure.database import db
 from settings import settings
 
 # this is the Alembic Config object, which provides
@@ -30,7 +30,7 @@ target_metadata = db
 
 
 def run_migrations_offline():
-    """Run migrations in 'offline' mode.
+    """Run migration in 'offline' mode.
 
     This configures the context with just a URL
     and not an Engine, though an Engine is acceptable
@@ -54,7 +54,7 @@ def run_migrations_offline():
 
 
 def run_migrations_online():
-    """Run migrations in 'online' mode.
+    """Run migration in 'online' mode.
 
     In this scenario we need to create an Engine
     and associate a connection with the context.

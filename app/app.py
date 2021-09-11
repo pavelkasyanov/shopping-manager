@@ -3,7 +3,7 @@ from fastapi_jwt_auth.exceptions import AuthJWTException
 
 from .api.auth import auth_router
 from .api.auth.exception_handlers import authjwt_exception_handler
-from .database import db
+from app.infrastructure.database.db import db
 
 
 def get_app() -> FastAPI:

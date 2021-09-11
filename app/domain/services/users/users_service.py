@@ -1,7 +1,7 @@
 from typing import List, Union
 
-from app.models.db.auth.users import User
-from app.models.view_models.users.create_user_vm import CreateUserViewModel
+from app.domain.models import User
+from app.domain.models.users import CreateUserViewModel
 
 
 class UsersService:
