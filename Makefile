@@ -44,8 +44,10 @@ clean:
 	rm -rf $(VENV_DIR)
 	rm -rf .pytest_cache
 
-test: venv lint
+force_test:
 	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
+
+test: venv lint force_test
 
 include .etc/Makefile_docker
 

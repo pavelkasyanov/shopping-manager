@@ -20,7 +20,9 @@ def upgrade():
     op.create_table(
         "users",
         sa.Column("id", sa.BigInteger(), nullable=False),
-        sa.Column("nickname", sa.Unicode(), nullable=True),
+        sa.Column("nickname", sa.Unicode(), nullable=False),
+        sa.Column("email", sa.Unicode(), nullable=False),
+        sa.Column("is_baned", sa.Unicode(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
 

@@ -7,7 +7,7 @@ auth_router = APIRouter()
 
 
 @auth_router.post("/login")
-async def login(auth_user: AuthUser, authorize: AuthJWT = Depends()):
+def login(auth_user: AuthUser, authorize: AuthJWT = Depends()):
     if auth_user.username != "test" or auth_user.password != "test":
         raise HTTPException(status_code=401, detail="Bad username or password")
 

@@ -1,3 +1,5 @@
-POSTGRES_DB=shopping-manager
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=shopping-manager
+DB_USER=postgres
+DB_PASSWORD=postgres

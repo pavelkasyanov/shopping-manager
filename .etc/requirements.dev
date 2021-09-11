@@ -7,3 +7,4 @@ flake8==3.9.2
 black==21.5b2
 uvicorn==0.14.0
 httpx==0.18.2
+sqlalchemy-utils==0.37.8

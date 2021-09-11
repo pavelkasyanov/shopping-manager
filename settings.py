@@ -17,6 +17,11 @@ def get_value(
 class AppSettings:
     def __init__(self, conf_filename: Optional[str] = None):
         config = Config(conf_filename or ".env")
+
+        self.TESTING = get_value(
+            config, "TESTING", cast=bool, default_value=False
+        )
+
         self.DB_DRIVER = get_value(
             config, "DB_DRIVER", default_value="postgresql"
         )
@@ -25,6 +30,11 @@ class AppSettings:
         self.DB_USER = get_value(config, "DB_USER")
         self.DB_PASSWORD = get_value(config, "DB_PASSWORD", cast=Secret)
         self.DB_DATABASE = get_value(config, "DB_DATABASE")
+        if self.TESTING:
+            if self.DB_DATABASE:
+                self.DB_DATABASE += "_test"
+            else:
+                self.DB_DATABASE = "shopping_manager_test"
         self.DB_POOL_MIN_SIZE = get_value(
             config, "DB_POOL_MIN_SIZE", cast=int, default_value=1
         )
@@ -54,9 +64,7 @@ class AppSettings:
         self.DB_ECHO = get_value(config, "DB_ECHO", cast=bool, default_value=False)
 
         self.DEBUG = get_value(config, "DEBUG", cast=bool, default_value=False)
-        self.TESTING = get_value(
-            config, "TESTING", cast=bool, default_value=False
-        )
+
 
         self.SITE_URL = get_value(config, "SITE_URL")
 
