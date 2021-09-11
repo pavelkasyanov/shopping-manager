@@ -1,7 +1,7 @@
 PROJECT = shopping-manager
 SRC_DIR := app
 VENV_DIR = .venv
-PYTHON := python
+PYTHON := python3
 RUN := . $(VENV_DIR)/bin/activate;
 PY_TEST := $(RUN) pytest
 PIP_C := $(RUN) pip-compile
@@ -12,7 +12,7 @@ venv_init:
 	@if [ ! -f "$(VENV_DIR)" ]; then \
 		$(PYTHON) -m venv $(VENV_DIR) --prompt $(PROJECT); \
 	fi
-	cp .etc/default/simple_env .env
+	cp .etc/default/sample_env .env
 	$(RUN) pip install pip-tools
 
 venv: venv_init install
@@ -44,5 +44,10 @@ clean:
 	rm -rf $(VENV_DIR)
 	rm -rf .pytest_cache
 
-test: venv lint
+force_test:
 	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
+
+test: lint force_test
+
+include .etc/Makefile_docker
+

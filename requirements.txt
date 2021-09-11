@@ -1,1 +1,1 @@
--r .etc/requirements.dev
+-r .etc/packages.dev

@@ -1,0 +1,11 @@
+run_docker_db:
+	docker run --name $(PROJECT)_db -p 5432:5432 -d postgres
+
+start_docker_db:
+	docker start $(PROJECT)_db
+
+stop_docker_db:
+	docker stop $(PROJECT)_db
+
+remove_docker_db:
+	docker rm $(PROJECT)_db
