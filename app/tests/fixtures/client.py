@@ -14,5 +14,7 @@ async def async_client():
         drop_database(settings.DB_DSN)
     create_database(settings.DB_DSN)
 
-    async with AsyncClient(app=app, base_url="http://test") as client, LifespanManager(app):
+    async with AsyncClient(
+        app=app, base_url="http://test"
+    ) as client, LifespanManager(app):
         yield client
