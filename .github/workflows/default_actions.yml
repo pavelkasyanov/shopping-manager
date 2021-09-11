@@ -26,12 +26,12 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: make venv
       - name: test
         run: make test
         env:
-          POSTGRES_HOST: postgres
-          POSTGRES_PORT: 5432
-          DB_PORT: 5432
+          DB_PORT: ${{ job.services.postgres.ports[5432] }}
           DB_DATABASE: shopping-manager
           DB_USER: postgres
           DB_PASSWORD: postgres

@@ -47,7 +47,7 @@ clean:
 force_test:
 	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
 
-test: venv lint force_test
+test: lint force_test
 
 include .etc/Makefile_docker
 
