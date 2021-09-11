@@ -5,7 +5,6 @@ from app.models.view_models.users.create_user_vm import CreateUserViewModel
 
 
 class UsersService:
-
     @classmethod
     async def get_all(cls) -> List[User]:
         return await User.all()
@@ -19,5 +18,7 @@ class UsersService:
 
     @classmethod
     async def create(cls, user_vm: CreateUserViewModel) -> User:
-        user = await User.create(nickname=user_vm.nickname, is_baned=False, email=user_vm.email)
+        user = await User.create(
+            nickname=user_vm.nickname, is_baned=False, email=user_vm.email
+        )
         return user

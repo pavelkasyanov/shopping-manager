@@ -1,7 +1,7 @@
 """add users table
 
 Revision ID: e952aca6d194
-Revises: 
+Revises:
 Create Date: 2021-06-26 20:18:26.989498
 
 """
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e952aca6d194'
+revision = "e952aca6d194"
 down_revision = None
 branch_labels = None
 depends_on = None

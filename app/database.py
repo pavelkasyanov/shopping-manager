@@ -7,5 +7,5 @@ db = Gino(
     pool_max_size=config.DB_POOL_MAX_SIZE,
     echo=config.DB_ECHO,
     retry_limit=config.DB_RETRY_LIMIT,
-    retry_interval=config.DB_RETRY_INTERVAL
+    retry_interval=config.DB_RETRY_INTERVAL,
 )

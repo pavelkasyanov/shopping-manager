@@ -1,8 +1,9 @@
 import pytest
+from asgi_lifespan import LifespanManager
 from httpx import AsyncClient
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
-from app.app import get_app
+from app.app import app
 from settings import settings
 
 
@@ -13,6 +14,5 @@ async def async_client():
         drop_database(settings.DB_DSN)
     create_database(settings.DB_DSN)
 
-    with AsyncClient(app=get_app(), base_url="http://test") as client:
+    async with AsyncClient(app=app, base_url="http://test") as client, LifespanManager(app):
         yield client
-

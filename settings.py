@@ -61,10 +61,11 @@ class AppSettings:
                 database=self.DB_DATABASE,
             ),
         )
-        self.DB_ECHO = get_value(config, "DB_ECHO", cast=bool, default_value=False)
+        self.DB_ECHO = get_value(
+            config, "DB_ECHO", cast=bool, default_value=False
+        )
 
         self.DEBUG = get_value(config, "DEBUG", cast=bool, default_value=False)
-
 
         self.SITE_URL = get_value(config, "SITE_URL")
 

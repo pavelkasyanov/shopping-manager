@@ -8,3 +8,4 @@ black==21.5b2
 uvicorn==0.14.0
 httpx==0.18.2
 sqlalchemy-utils==0.37.8
+asgi-lifespan=1.0.1

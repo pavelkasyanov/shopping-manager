@@ -1,7 +1,7 @@
 PROJECT = shopping-manager
 SRC_DIR := app
 VENV_DIR = .venv
-PYTHON := python
+PYTHON := python3
 RUN := . $(VENV_DIR)/bin/activate;
 PY_TEST := $(RUN) pytest
 PIP_C := $(RUN) pip-compile

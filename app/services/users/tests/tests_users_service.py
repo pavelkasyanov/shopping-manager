@@ -9,7 +9,9 @@ from app.services.users.users_service import UsersService
 async def test_create_user_success(async_client: AsyncClient) -> None:
     user_service = UsersService()
 
-    user_vm = CreateUserViewModel(nickname="test_user", email="test_user@mail.com")
+    user_vm = CreateUserViewModel(
+        nickname="test_user", email="test_user@mail.com"
+    )
 
     created_user = user_service.create(user_vm)
 
