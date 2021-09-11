@@ -1,5 +1,5 @@
 Product:
-- id: uuid;
+- product_id: uuid;
 - name: str;
 - remark: str; # примечание
 - type_id: uuid;
@@ -7,16 +7,16 @@ Product:
 - archived: bool;
 
 ProductSubType: # Подтип продукта
-- id: uuid;
+- product_sub_type_id: uuid;
 - name: str;
 product_type_id: uuid;
 
 ProductType: #Тип продукта
-- id: uuid;
+- sub_type_id: uuid;
 - name: str;
 
 ProductToBuy: # продукт для покупки:
-- id: uuid;
+- product_to_byu_id: uuid;
 - count: float;
 - unit_price: float; # цена за единицу товара
 - unit_price_with_discount: float # цена за единицу со скидкой

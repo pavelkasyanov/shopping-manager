@@ -10,6 +10,8 @@ asyncpg==0.23.0
     # via gino
 click==8.0.1
     # via -r .etc/requirements.in
+dependency-injector==4.36.0
+    # via -r .etc/requirements.in
 fastapi==0.65.1
     # via
     #   -r .etc/requirements.in
@@ -39,7 +41,9 @@ python-dateutil==2.8.1
 python-editor==1.0.4
     # via alembic
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   dependency-injector
+    #   python-dateutil
 sqlalchemy==1.3.24
     # via
     #   alembic
