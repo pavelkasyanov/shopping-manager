@@ -17,7 +17,11 @@ class UserSchema(Entity):
         orm_mode = True
 
 
-class CreateModel(Entity):
+class CreateUserModel(Entity):
     nickname: str
     email: str
     password: str
+
+
+class UpdateUserSchema(Entity):
+    pass

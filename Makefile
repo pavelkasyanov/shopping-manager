@@ -1,4 +1,5 @@
 PROJECT = shopping-manager
+DB_NAME = shopping_manager
 SRC_DIR := app
 VENV_DIR = .venv
 PYTHON := python3
@@ -55,5 +56,5 @@ upgrade_db:
 create_migration:
 	$(RUN) $(PYTHON) manage.py migration --msg "$(msg)"
 
-include .etc/Makefile_docker
+include .etc/Makefile_docker.makefile
 

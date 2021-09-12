@@ -1,4 +1,5 @@
 UserId = int
 
 
-class UserNotExistError(Exception): pass
+class NotFoundError(Exception):
+    pass
