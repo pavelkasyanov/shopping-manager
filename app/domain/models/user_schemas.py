@@ -6,7 +6,7 @@ from pydantic.networks import EmailStr
 from app.domain.models.base import Entity
 
 
-class UserSchema(Entity):
+class BaseUserSchema(Entity):
     user_id: int
     email: Optional[EmailStr] = Field(default=None)
     is_active: Optional[bool] = Field(default=True)
@@ -23,5 +23,5 @@ class CreateUserModel(Entity):
     password: str
 
 
-class UpdateUserSchema(Entity):
-    pass
+class UserSchema(BaseUserSchema):
+    user_id: int

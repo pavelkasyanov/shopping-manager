@@ -10,7 +10,7 @@ asyncpg==0.23.0
     # via gino
 click==8.0.1
     # via -r .etc/requirements.in
-dependency-injector==4.36.0
+dependencies==7.1.0
     # via -r .etc/requirements.in
 dnspython==2.1.0
     # via email-validator
@@ -47,9 +47,7 @@ python-dateutil==2.8.1
 python-editor==1.0.4
     # via alembic
 six==1.16.0
-    # via
-    #   dependency-injector
-    #   python-dateutil
+    # via python-dateutil
 sqlalchemy==1.3.24
     # via
     #   alembic

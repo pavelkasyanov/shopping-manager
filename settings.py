@@ -10,7 +10,7 @@ def get_value(
     config: Config, key: str, cast: Callable = None, default_value: Any = None
 ) -> Any:
     return config(key, cast=cast, default=default_value) or os.environ.get(
-        "DB_DRIVER", default=default_value
+        key, default=default_value
     )
 
 

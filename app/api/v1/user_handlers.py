@@ -2,46 +2,48 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-from dependency_injector.wiring import Provide, inject
-
-from app.domain.deps import Container
-from app.domain.models.user_schemas import UserSchema
+from app.api.deps import get_user_service
+from app.domain.models.user_schemas import UserSchema, CreateUserModel
 from app.domain.services.users_service import UserService
+from app.domain.types import UserId
 
 router = APIRouter(prefix="/users")
 
 
-@router.get("/all", name="get_all_users")
-@inject
+@router.get("/all", name="get_all_users", status_code=200)
 async def get_all_users(
-    user_service: UserService = Depends(Provide[Container.user_service]),
+    user_service: UserService = Depends(get_user_service),
 ) -> List[UserSchema]:
     return await user_service.get_all()
 
 
-@router.get("/{user_id}", name="get_user_by_id")
+@router.get("/{user_id}", name="get_user_by_id", status_code=200)
 async def get_user_by_id(
-    user_service=Depends(Provide[Container.user_service]),
-) -> None:
-    pass
+    user_id: UserId,
+    user_service: UserService = Depends(get_user_service),
+) -> UserSchema:
+    return await user_service.get_by_id(user_id)
 
 
-@router.post("/create", name="create_user")
+@router.post("/create", name="create_user", status_code=201)
 async def create_user(
-    user_service=Depends(Provide[Container.user_service]),
-) -> None:
-    pass
+    create_model: CreateUserModel,
+    user_service: UserService = Depends(get_user_service),
+) -> UserSchema:
+    return await user_service.create(create_model)
 
 
-@router.post("/ban", name="create_user")
+@router.post("/{user_id}/ban", name="create_user", status_code=204)
 async def ban_user(
-    user_service=Depends(Provide[Container.user_service]),
+    user_id: UserId,
+    user_service: UserService = Depends(get_user_service),
 ) -> None:
-    pass
+    await user_service.ban_user(user_id)
 
 
-@router.post("/unban", name="create_user")
+@router.post("/{user_id}/unban", name="create_user", status_code=204)
 async def unban_user(
-    user_service=Depends(Provide[Container.user_service]),
+    user_id: UserId,
+    user_service: UserService = Depends(get_user_service),
 ) -> None:
-    pass
+    await user_service.unban_user(user_id)
