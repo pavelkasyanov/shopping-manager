@@ -10,7 +10,7 @@ from app.domain.types import NotFoundError
 
 @pytest.mark.asyncio
 async def test_get_all_users_not_authorized(
-        async_client: AsyncClient, mocker
+    async_client: AsyncClient, mocker
 ) -> None:
     mocker.patch.object(UserService, "get_all", return_value=[])
 
@@ -21,7 +21,7 @@ async def test_get_all_users_not_authorized(
 
 @pytest.mark.asyncio
 async def test_get_all_users_forbidden(
-        auth_client: AsyncClient, mocker
+    auth_client: AsyncClient, mocker
 ) -> None:
     mocker.patch.object(UserService, "get_all", return_value=[])
 
@@ -32,7 +32,7 @@ async def test_get_all_users_forbidden(
 
 @pytest.mark.asyncio
 async def test_get_all_users_success(
-        auth_superuser_client: AsyncClient, mocker
+    auth_superuser_client: AsyncClient, mocker
 ) -> None:
     mocker.patch.object(
         UserService,
@@ -62,7 +62,7 @@ async def test_get_all_users_success(
 
 @pytest.mark.asyncio
 async def test_get_user_by_id_success(
-        auth_superuser_client: AsyncClient, mocker
+    auth_superuser_client: AsyncClient, mocker
 ) -> None:
     mocker.patch.object(
         UserService,
@@ -90,7 +90,7 @@ async def test_get_user_by_id_success(
 
 @pytest.mark.asyncio
 async def test_get_user_by_id_not_found_error(
-        auth_superuser_client: AsyncClient, mocker
+    auth_superuser_client: AsyncClient, mocker
 ) -> None:
     async def response(user_id) -> None:
         raise NotFoundError()

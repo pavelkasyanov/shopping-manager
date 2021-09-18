@@ -41,10 +41,10 @@ async def auth_client(async_client, mocker, authorize) -> AsyncClient:
     mocker.patch.object(
         AuthenticationService, "verify_user", side_effect=response
     )
-    user_claims = AuthUserClaims(
-        user_id=2, is_superuser=False
-    ).dict()
-    access_token = authorize.create_access_token("test@test.com", user_claims=user_claims)
+    user_claims = AuthUserClaims(user_id=2, is_superuser=False).dict()
+    access_token = authorize.create_access_token(
+        "test@test.com", user_claims=user_claims
+    )
     async_client.headers["Authorization"] = f"Bearer {access_token}"
 
     yield async_client
@@ -66,10 +66,10 @@ async def auth_superuser_client(async_client, mocker, authorize) -> AsyncClient:
         AuthenticationService, "verify_user", side_effect=response
     )
 
-    user_claims = AuthUserClaims(
-        user_id=1, is_superuser=True
-    ).dict()
-    access_token = authorize.create_access_token("test@test.com", user_claims=user_claims)
+    user_claims = AuthUserClaims(user_id=1, is_superuser=True).dict()
+    access_token = authorize.create_access_token(
+        "test@test.com", user_claims=user_claims
+    )
     async_client.headers["Authorization"] = f"Bearer {access_token}"
 
     yield async_client
