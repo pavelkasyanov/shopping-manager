@@ -23,8 +23,24 @@ def cli():
 @click.option(
     "-p", "--port", type=int, default=8000, help="port", show_default=True
 )
-def runserver(host: str, port: int) -> None:
-    uvicorn.run(app, host=host, port=port)
+@click.option(
+    "-d",
+    "--debug",
+    type=bool,
+    default=False,
+    help="debug mode",
+    show_default=True,
+)
+@click.option(
+    "-r",
+    "--reload",
+    type=bool,
+    default=False,
+    help="reload after update",
+    show_default=True,
+)
+def runserver(host: str, port: int, debug: bool, reload: bool) -> None:
+    uvicorn.run(app, host=host, port=port, debug=debug, workers=1)
 
 
 @cli.command(help="apply migration")
