@@ -11,7 +11,6 @@ class BaseUserSchema(Entity):
     email: Optional[EmailStr] = Field(default=None)
     is_active: Optional[bool] = Field(default=True)
     is_superuser: Optional[bool] = Field(default=False)
-    full_name: Optional[str] = Field(default=None)
 
     class Config:
         orm_mode = True
