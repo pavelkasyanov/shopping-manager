@@ -8,8 +8,8 @@ pytest_plugins = [
 
 
 @pytest.mark.asyncio
-@pytest.fixture(autouse=True, scope="function")
-async def init_db() -> None:
+@pytest.fixture()
+async def create_db() -> None:
     await db.set_bind(
         db.config["dsn"],
         echo=db.config["echo"],
@@ -18,6 +18,13 @@ async def init_db() -> None:
         ssl=db.config["ssl"],
         **db.config["kwargs"],
     )
+    yield
+    await db.pop_bind().close()
+
+
+@pytest.mark.asyncio
+@pytest.fixture(autouse=True)
+async def init_db(create_db) -> None:
     await db.gino.create_all()
     yield
     await db.gino.drop_all()
