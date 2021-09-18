@@ -24,7 +24,7 @@ async def get_all_users(
 
 
 @router.get("/me", name="get_user_info_about_me", status_code=200)
-async def get_all_users(
+async def get_current_user(
     auth_user: AuthUserClaims = Depends(get_authorized_user),
     user_service: UserService = Depends(get_user_service),
 ) -> UserSchema:

@@ -1,13 +1,9 @@
 import datetime
 
-import jwt
-
 import pytest
+from fastapi_jwt_auth import AuthJWT
 from httpx import AsyncClient
 
-from fastapi_jwt_auth import AuthJWT
-
-from app.api.auth import AuthSettings
 from app.app import app
 from app.domain.models.auth_user_claims import AuthUserClaims
 from app.domain.models.user_schemas import VerificationUserSchema

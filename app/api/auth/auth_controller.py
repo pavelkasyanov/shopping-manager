@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi_jwt_auth import AuthJWT
 
@@ -7,6 +9,8 @@ from ...domain.models.auth_user_claims import AuthUserClaims
 from ...domain.services.authentication_service import AuthenticationService
 
 auth_router = APIRouter()
+
+logger = logging.getLogger(__file__)
 
 
 @auth_router.post("/login")
@@ -34,7 +38,8 @@ async def login(
             subject=auth_user.username
         )
         return {"access_token": access_token, "refresh_token": refresh_token}
-    except Exception as ex:
+    except Exception:
+        logger.exception("error in login")
         raise HTTPException(status_code=401, detail="Bad username or password")
 
 
