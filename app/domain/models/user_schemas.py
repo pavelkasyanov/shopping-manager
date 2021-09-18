@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Optional
 
 from pydantic.fields import Field
@@ -7,10 +8,10 @@ from app.domain.models.base import Entity
 
 
 class BaseUserSchema(Entity):
-    user_id: int
-    email: Optional[EmailStr] = Field(default=None)
-    is_active: Optional[bool] = Field(default=True)
-    is_superuser: Optional[bool] = Field(default=False)
+    nickname: str = Field(alias="nickname")
+    email: Optional[EmailStr] = Field(default=None, alias="email")
+    is_active: Optional[bool] = Field(default=True, alias="isActive")
+    is_superuser: Optional[bool] = Field(default=False, alias="isSuperUser")
 
     class Config:
         orm_mode = True
@@ -23,4 +24,9 @@ class CreateUserModel(Entity):
 
 
 class UserSchema(BaseUserSchema):
-    user_id: int
+    user_id: int = Field(alias="userId")
+    created_date: datetime = Field(alias="created")
+
+
+class VerificationUserSchema(UserSchema):
+    password: str

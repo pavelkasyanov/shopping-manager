@@ -9,4 +9,5 @@ fastapi-jwt-auth==0.5.0
 gino[starlette]
 alembic==1.6.5
 psycopg2==2.9.1
+passlib[bcrypt]>=1.7.4
 dependencies>=7.1.0

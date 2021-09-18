@@ -27,7 +27,9 @@ async def test_get_by_id_success() -> None:
     service: UserService = Services.user_service
     repo = Services.user_repository
 
-    user_model = CreateUserModel(nickname="nickname", email="test@test.com", password="passwd")
+    user_model = CreateUserModel(
+        nickname="nickname", email="test@test.com", password="passwd"
+    )
     await repo.create(user_model)
 
     result = await service.get_by_id(1)
@@ -39,7 +41,9 @@ async def test_get_by_id_success() -> None:
 async def test_create_user_success() -> None:
     service: UserService = Services.user_service
 
-    user_model = CreateUserModel(nickname="nickname", email="test@test.com", password="passwd")
+    user_model = CreateUserModel(
+        nickname="nickname", email="test@test.com", password="passwd"
+    )
     result = await service.create(user_model)
 
     assert result.user_id == 1
@@ -52,7 +56,11 @@ async def test_ban_user_success() -> None:
     service: UserService = Services.user_service
     repo = Services.user_repository
 
-    await repo.create(CreateUserModel(nickname="nickname", email="test@test.com", password="passwd"))
+    await repo.create(
+        CreateUserModel(
+            nickname="nickname", email="test@test.com", password="passwd"
+        )
+    )
 
     await service.ban_user(1)
 
@@ -65,7 +73,11 @@ async def test_unban_user_success() -> None:
     service: UserService = Services.user_service
     repo = Services.user_repository
 
-    created_result = await repo.create(CreateUserModel(nickname="nickname", email="test@test.com", password="passwd"))
+    created_result = await repo.create(
+        CreateUserModel(
+            nickname="nickname", email="test@test.com", password="passwd"
+        )
+    )
     updated_model = BaseUserSchema(**created_result.__dict__["__values__"])
     updated_model.is_active = False
     await repo.update(created_result, updated_model)

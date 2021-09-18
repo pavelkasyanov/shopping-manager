@@ -1,6 +1,7 @@
 pytest==6.2.4
 requests==2.25.1
 pytest-cov==2.12.1
+pytest-mock>=3.6.1
 pytest-asyncio
 coverage[toml]
 flake8==3.9.2

@@ -20,6 +20,12 @@ class UserRepository:
             raise NotFoundError()
         return user
 
+    async def get_by_email(self, user_email: str) -> User:
+        user = await User.query.where(User.email == user_email).gino.first()
+        if not user:
+            raise NotFoundError()
+        return user
+
     async def create(self, user_model: CreateUserModel) -> User:
         return await self._model.create(**user_model.__dict__)
 

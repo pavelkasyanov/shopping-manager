@@ -5,9 +5,15 @@ from app.domain.models.user_schemas import CreateUserModel, BaseUserSchema
 from app.infrastructure.database.models.user import User
 
 
-async def create_user(nickname: str = "test", email: str = "test@test.com", password: str = "passwd") -> User:
+async def create_user(
+    nickname: str = "test",
+    email: str = "test@test.com",
+    password: str = "passwd",
+) -> User:
     repo = Services.user_repository
-    user_model = CreateUserModel(nickname=nickname, email=email, password=password)
+    user_model = CreateUserModel(
+        nickname=nickname, email=email, password=password
+    )
     return await repo.create(user_model)
 
 
