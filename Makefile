@@ -56,5 +56,3 @@ upgrade_db:
 create_migration:
 	$(RUN) $(PYTHON) manage.py migration --msg "$(msg)"
 
-include .etc/Makefile_docker.makefile
-
