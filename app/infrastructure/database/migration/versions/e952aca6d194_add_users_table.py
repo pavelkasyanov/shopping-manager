@@ -27,15 +27,11 @@ def upgrade():
             autoincrement=True,
             nullable=False,
         ),
-        sa.Column("email", sa.VARCHAR(), autoincrement=False, nullable=False),
+        sa.Column("email", sa.VARCHAR(), nullable=False),
         sa.Column("nickname", sa.VARCHAR(), nullable=False),
-        sa.Column("password", sa.VARCHAR(), autoincrement=False, nullable=True),
-        sa.Column(
-            "is_active", sa.BOOLEAN(), autoincrement=False, nullable=False
-        ),
-        sa.Column(
-            "is_superuser", sa.BOOLEAN(), autoincrement=False, nullable=False
-        ),
+        sa.Column("password", sa.VARCHAR(), nullable=False),
+        sa.Column("is_banned", sa.BOOLEAN(), nullable=True),
+        sa.Column("is_superuser", sa.BOOLEAN(), nullable=True),
         sa.Column(
             "created_date",
             postgresql.TIMESTAMP(),

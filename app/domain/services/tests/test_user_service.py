@@ -65,7 +65,7 @@ async def test_ban_user_success() -> None:
     await service.ban_user(1)
 
     user = await repo.get_by_id(1)
-    assert user.is_active is False
+    assert user.is_banned is True
 
 
 @pytest.mark.asyncio
@@ -79,10 +79,10 @@ async def test_unban_user_success() -> None:
         )
     )
     updated_model = BaseUserSchema(**created_result.__dict__["__values__"])
-    updated_model.is_active = False
+    updated_model.is_banned = True
     await repo.update(created_result, updated_model)
 
     await service.unban_user(1)
 
     user = await repo.get_by_id(1)
-    assert user.is_active is True
+    assert user.is_banned is False

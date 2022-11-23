@@ -30,19 +30,19 @@ class UserService:
         return await self._user_repository.create(user_model=user_model)
 
     async def ban_user(self, user_id: UserId) -> None:
-        await self._set_active_status(user_id, False)
+        await self._set_banned_status(user_id, True)
 
     async def unban_user(self, user_id: UserId) -> None:
-        await self._set_active_status(user_id, True)
+        await self._set_banned_status(user_id, False)
 
     async def get_for_verification(self, email: str) -> VerificationUserSchema:
         user = await self._user_repository.get_by_email(email)
         return VerificationUserSchema.from_orm(user)
 
-    async def _set_active_status(self, user_id: UserId, status: bool) -> None:
+    async def _set_banned_status(self, user_id: UserId, status: bool) -> None:
         current_user = await self._user_repository.get_by_id(user_id)
         current_schema = UserSchema.from_orm(current_user)
-        current_schema.is_active = status
+        current_schema.is_banned = status
         await self._user_repository.update(
             current_user, new_user=current_schema
         )
