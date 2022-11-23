@@ -1,5 +1,4 @@
 import pytest
-import alembic
 from alembic import command
 from alembic.config import Config
 from sqlalchemy_utils import database_exists, create_database, drop_database
