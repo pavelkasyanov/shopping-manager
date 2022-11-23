@@ -10,7 +10,7 @@ from app.domain.models.base import Entity
 class BaseUserSchema(Entity):
     nickname: str = Field(alias="nickname")
     email: Optional[EmailStr] = Field(default=None, alias="email")
-    is_active: Optional[bool] = Field(default=True, alias="isActive")
+    is_banned: Optional[bool] = Field(default=True, alias="isBanned")
     is_superuser: Optional[bool] = Field(default=False, alias="isSuperUser")
 
     class Config:
