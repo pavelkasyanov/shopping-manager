@@ -1,13 +1,27 @@
-<script>
-    let name = 'world';
-  let envVariable = process.env.foo;
+<script lang="ts">
+    import { Router, Link, Route } from 'svelte-routing';
+    import Home from './views/Home.svelte'
+
+    import { applyHttpInterceptors } from './interceptors';
+
+    import { Redirect, SignIn, PageNotFound } from './components';
+
+    export let url = '';
+
+    applyHttpInterceptors();
+
+    
 </script>
 
-<style type="scss">
-    h1{
-        color: tomato
-    }
-</style>
-
-<h1>Hello {name}!</h1>
-<p>env variable: {envVariable}</p>
+<div class="section columns">
+    <Router {url}>
+        <main class="column">
+            <Route path="/">
+                <Redirect path="/home" />
+              </Route>
+              <Route path="/home" component={Home} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="**" component={PageNotFound} />
+        </main>
+    </Router>
+</div>
