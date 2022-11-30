@@ -18,6 +18,7 @@ venv_init:
 
 venv: venv_init install
 	$(RUN) pip install -r requirements.txt
+	mkdir -p app/static
 
 lock:
 	$(PIP_C) --output-file=.etc/packages .etc/requirements.in
