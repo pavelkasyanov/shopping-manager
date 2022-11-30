@@ -6,13 +6,13 @@ import axios, {
 } from 'axios';
 import { prefixReq } from './../utils/http-config';
 import { logMessage } from './../utils/log';
-import * as sessionService from '../store/session.service';
+import { getAccessToken } from '../store/session.service';
 
 
 
 export function authInterceptor() {
     axios.interceptors.request.use((config: AxiosRequestConfig) => {
-        const { accessToken } = sessionService;
+        const accessToken = getAccessToken();
         
         if (accessToken) {
             config.headers.Authorization = `Bearer ${accessToken}`;
@@ -31,7 +31,7 @@ export function authInterceptor() {
         (error: AxiosError) => {
             if (error.response.status === 401) {
                 if(error.response.data) {
-                    navigate('/login');
+                    navigate('/signin');
                 } else {
                 }
                 return Promise.resolve(true);

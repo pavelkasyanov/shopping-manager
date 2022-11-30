@@ -1,0 +1,1 @@
+from .exception_handlers import exception_handler_for_404

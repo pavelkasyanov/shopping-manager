@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=.etc/packages.dev .etc/requirements.dev .etc/requirements.in
 #
+aiofiles==22.1.0
+    # via -r .etc/requirements.in
 alembic==1.6.5
     # via -r .etc/requirements.in
 anyio==3.2.1
@@ -75,10 +77,14 @@ idna==2.10
     #   rfc3986
 iniconfig==1.1.1
     # via pytest
+jinja2==3.0.3
+    # via -r .etc/requirements.in
 mako==1.1.4
     # via alembic
 markupsafe==2.0.1
-    # via mako
+    # via
+    #   jinja2
+    #   mako
 mccabe==0.6.1
     # via flake8
 mypy-extensions==0.4.3

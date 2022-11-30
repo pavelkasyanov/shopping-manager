@@ -140,3 +140,9 @@ docker-compose-db.yml
 frontend/node_modules/
 frontend/public/build/
 frontend/.DS_Store
+
+app/static/
+
+builds/
+
+.data/

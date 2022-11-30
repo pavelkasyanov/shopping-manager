@@ -52,7 +52,9 @@
  import CSSMinimizerPlugin from 'css-minimizer-webpack-plugin';
  import SvelteCheckPlugin from 'svelte-check-plugin';
  
+ 
  import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+ import CopyPlugin from 'copy-webpack-plugin';
  
  import fs from 'fs';
  import path from 'path';
@@ -223,6 +225,12 @@
  
      config.optimization.minimize = true;
  }
+ 
+ config.plugins?.push(new CopyPlugin({
+    patterns: [
+        {from: path.resolve(__dirname, 'public/build'), to: path.resolve(__dirname, '..', 'app/static') }
+    ]
+}));
  
  // Parse as JSON5 to add support for comments in tsconfig.json parsing.
  require('require-json5').replace();

@@ -1,0 +1,1 @@
+insert into users(user_id,email,nickname,password,is_banned,is_superuser,created_date) values(1, 'admin@admin.ru', 'admin', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, True, now());

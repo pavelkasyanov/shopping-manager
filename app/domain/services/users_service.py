@@ -35,8 +35,8 @@ class UserService:
     async def unban_user(self, user_id: UserId) -> None:
         await self._set_banned_status(user_id, False)
 
-    async def get_for_verification(self, email: str) -> VerificationUserSchema:
-        user = await self._user_repository.get_by_email(email)
+    async def get_for_verification(self, login: str) -> VerificationUserSchema:
+        user = await self._user_repository.get_by_email(login)
         return VerificationUserSchema.from_orm(user)
 
     async def _set_banned_status(self, user_id: UserId, status: bool) -> None:

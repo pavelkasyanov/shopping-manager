@@ -3,7 +3,7 @@ import subprocess
 import click
 import uvicorn
 
-from app.app import app
+from app.app import app  # noqa: ignore
 
 
 @click.group()
@@ -40,7 +40,14 @@ def cli():
     show_default=True,
 )
 def runserver(host: str, port: int, debug: bool, reload: bool) -> None:
-    uvicorn.run(app, host=host, port=port, debug=debug, workers=1)
+    uvicorn.run(
+        "manage:app",
+        host=host,
+        port=port,
+        debug=debug,
+        workers=1,
+        reload=reload,
+    )
 
 
 @cli.command(help="apply migration")

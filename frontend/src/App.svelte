@@ -4,7 +4,9 @@
 
     import { applyHttpInterceptors } from './interceptors';
 
-    import { Redirect, SignIn, PageNotFound } from './components';
+    import { Redirect } from './components';
+
+    import { SignIn, PageNotFound, Users } from './views';
 
     export let url = '';
 
@@ -15,13 +17,18 @@
 
 <div class="section columns">
     <Router {url}>
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="/users">Users</Link>
+          </nav>
         <main class="column">
             <Route path="/">
                 <Redirect path="/home" />
               </Route>
               <Route path="/home" component={Home} />
               <Route path="/signin" component={SignIn} />
-              <Route path="**" component={PageNotFound} />
+              <Route path="/users" component={Users} />
+              <Route component={PageNotFound} />
         </main>
     </Router>
 </div>

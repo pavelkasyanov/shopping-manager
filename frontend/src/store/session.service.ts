@@ -1,7 +1,9 @@
 import axios from 'axios';
 import * as store from './store';
 import type { User } from '../models';
-import { API } from '../config';
+import { BACKEND_URL } from '../config';
+
+import { setLocalStorageValue, getLocalStorageValue } from '../utils/locastorage'
 
 export interface SessionState {
     loggedIn: boolean;
@@ -18,15 +20,21 @@ let _isLoggedIn = false;
 let sessionState: SessionState = emptySessionPayload;
 export let accessToken: string;
 
+const accessTokenLocalStorageKey = "accessToken";
+
 export function isLoggedIn(): boolean {
-    return _isLoggedIn;
+    return getLocalStorageValue(accessTokenLocalStorageKey) !== null;
 }
 
-export async function login(email: string, password: string) {
-    const message = `Signed in as ${email}`;
-    const signinUrl = `${API}/login/`;
+export function getAccessToken(): string {
+    return getLocalStorageValue(accessTokenLocalStorageKey);
+}
+
+export async function login(username: string, password: string) {
+    const message = `Signed in as ${username}`;
+    const signinUrl = `${BACKEND_URL}/login/`;
     const body: Partial<User> = {
-        email,
+        username,
         password,
     };
 
@@ -37,7 +45,7 @@ export async function login(email: string, password: string) {
             accessToken = data.accessToken;
             sessionState = { loggedIn: true, message };
             store.getSession(sessionState);
-            _isLoggedIn = true;
+            setLocalStorageValue(accessTokenLocalStorageKey, accessToken);
             return true;
         } else {
             logout();

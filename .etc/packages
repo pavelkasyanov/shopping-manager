@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=.etc/packages .etc/requirements.in
 #
+aiofiles==22.1.0
+    # via -r .etc/requirements.in
 alembic==1.6.5
     # via -r .etc/requirements.in
 asyncpg==0.23.0
@@ -34,10 +36,14 @@ gino-starlette==0.1.2
     # via gino
 idna==3.2
     # via email-validator
+jinja2==3.0.3
+    # via -r .etc/requirements.in
 mako==1.1.4
     # via alembic
 markupsafe==2.0.1
-    # via mako
+    # via
+    #   jinja2
+    #   mako
 passlib[bcrypt]==1.7.4
     # via -r .etc/requirements.in
 psycopg2==2.9.1

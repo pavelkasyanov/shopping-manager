@@ -37,10 +37,10 @@ async def login(
         refresh_token: str = authorize.create_refresh_token(
             subject=auth_user.username
         )
-        return {"access_token": access_token, "refresh_token": refresh_token}
+        return {"accessToken": access_token, "refreshToken": refresh_token}
     except Exception:
         logger.exception("error in login")
-        raise HTTPException(status_code=401, detail="Bad username or password")
+        raise HTTPException(status_code=422, detail="Bad username or password")
 
 
 @auth_router.post("/refresh")
