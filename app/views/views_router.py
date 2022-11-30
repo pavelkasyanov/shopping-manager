@@ -18,11 +18,8 @@ async def index(request: Request) -> Response:
 
 
 @views_router.get("/home")
-async def index(
-    request: Request, 
-    Authorize: AuthJWT = Depends()
-) -> Response:
-    
+async def home(request: Request, Authorize: AuthJWT = Depends()) -> Response:
+
     Authorize.jwt_required()
 
     return templates.TemplateResponse(

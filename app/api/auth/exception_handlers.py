@@ -8,8 +8,10 @@ from app.utils.detect_json_request import is_json_request
 
 
 def authjwt_exception_handler(request: Request, exc: AuthJWTException):
-    if (is_json_request(request)):
-        return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content={"detail": exc.message})
-    
+    if is_json_request(request):
+        return JSONResponse(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            content={"detail": exc.message},
+        )
+
     return RedirectResponse(url="/signin")
-    

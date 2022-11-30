@@ -16,7 +16,7 @@ cffi==1.14.6
     # via bcrypt
 click==8.0.1
     # via -r .etc/requirements.in
-dependencies==7.1.0
+dependencies==7.7.0
     # via -r .etc/requirements.in
 dnspython==2.1.0
     # via email-validator

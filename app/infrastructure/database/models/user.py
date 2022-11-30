@@ -11,5 +11,8 @@ class User(db.Model):
     is_banned = db.Column("is_banned", db.Boolean, nullable=True)
     is_superuser = db.Column("is_superuser", db.Boolean, nullable=True)
     created_date = db.Column(
-        "created_date", db.DateTime, server_default=db.func.now(), nullable=False
+        "created_date",
+        db.DateTime,
+        server_default=db.func.now(),
+        nullable=False,
     )
