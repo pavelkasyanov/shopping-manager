@@ -2,6 +2,7 @@ import logging
 
 from fastapi import APIRouter, Depends, Request, Response
 from fastapi_jwt_auth import AuthJWT
+
 from app.templates import templates
 
 views_router = APIRouter()
@@ -18,9 +19,10 @@ async def index(request: Request) -> Response:
 
 
 @views_router.get("/home")
-async def home(request: Request, Authorize: AuthJWT = Depends()) -> Response:
+@views_router.get("/users")
+def home(request: Request, Authorize: AuthJWT = Depends()) -> Response:
 
-    Authorize.jwt_required()
+    # Authorize.jwt_required()
 
     return templates.TemplateResponse(
         "index.html", context={"request": request}

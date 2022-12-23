@@ -47,5 +47,7 @@ class AppSettings:
 
         self.SITE_URL = config("SITE_URL", default="0.0.0.0")
 
+        self.ACCESS_TOKEN_EXPIRED = config("ACCESS_TOKEN_EXPIRED", cast=int, default=15)
+
 
 settings = AppSettings()

@@ -7,7 +7,7 @@ from app.app import app  # noqa: ignore
 
 
 @click.group()
-def cli():
+def cli() ->None:
     pass
 
 

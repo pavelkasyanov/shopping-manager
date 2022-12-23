@@ -1,16 +1,17 @@
 from fastapi import FastAPI
-from fastapi_jwt_auth.exceptions import AuthJWTException
-from sqlalchemy_utils import database_exists, create_database
-
-from settings import settings
-from .api.auth import auth_router
-from .views.views_router import views_router
-from .api import v1 as v1_api
-from .api.auth.exception_handlers import authjwt_exception_handler
-from app.infrastructure.database.db import db
-from app.handlers import exception_handler_for_404
-
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi_jwt_auth.exceptions import AuthJWTException
+from sqlalchemy_utils import create_database, database_exists
+
+from app.handlers import exception_handler_for_404
+from app.infrastructure.database.db import db
+from settings import settings
+
+from .api import v1 as v1_api
+from .api.auth import auth_router
+from .api.auth.exception_handlers import authjwt_exception_handler
+from .views.views_router import views_router
 
 
 def get_app() -> FastAPI:
@@ -37,12 +38,12 @@ app = get_app()
 
 
 @app.on_event("startup")
-async def startup_event():
+async def startup_event() -> None:
     if not database_exists(settings.DB_DSN):
         create_database(settings.DB_DSN)
     db.init_app(app)
 
 
 @app.get("/ping")
-async def index():
-    return {"msg": "pong"}
+async def index() -> JSONResponse:
+    return JSONResponse({"msg": "pong"})

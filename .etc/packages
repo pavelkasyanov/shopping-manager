@@ -73,6 +73,8 @@ starlette==0.14.2
     #   -r .etc/requirements.in
     #   fastapi
     #   gino-starlette
+types-passlib==1.7.7.3
+    # via -r .etc/requirements.in
 typing-extensions==3.10.0.0
     # via
     #   -r .etc/requirements.in

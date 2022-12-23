@@ -22,6 +22,8 @@ class CreateUserModel(Entity):
     email: str
     password: str
 
+    created_date: datetime = datetime.utcnow()
+
 
 class UserSchema(BaseUserSchema):
     user_id: int = Field(alias="userId")

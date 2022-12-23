@@ -14,7 +14,9 @@ async def test_get_all_users_not_authorized(
 ) -> None:
     mocker.patch.object(UserService, "get_all", return_value=[])
 
-    response = await async_client.get("/api/v1/users/all")
+    response = await async_client.get(
+        "/api/v1/users/all", headers={"Content-Type": "application/json"}
+    )
 
     assert response.status_code == 401
 

@@ -5,10 +5,9 @@ Revises:
 Create Date: 2021-06-26 20:18:26.989498
 
 """
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 from sqlalchemy.dialects import postgresql
-
 
 # revision identifiers, used by Alembic.
 revision = "e952aca6d194"
@@ -17,7 +16,7 @@ branch_labels = None
 depends_on = None
 
 
-def upgrade():
+def upgrade() -> None:
     op.create_table(
         "users",
         sa.Column(
@@ -42,5 +41,5 @@ def upgrade():
     )
 
 
-def downgrade():
+def downgrade() -> None:
     op.drop_table("users")

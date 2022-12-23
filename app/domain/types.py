@@ -2,4 +2,8 @@ UserId = int
 
 
 class NotFoundError(Exception):
-    pass
+    ...
+
+
+class VerificationFailError(Exception):
+    ...

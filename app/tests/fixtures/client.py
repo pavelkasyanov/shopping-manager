@@ -1,4 +1,5 @@
 import datetime
+from typing import AsyncGenerator
 
 import pytest
 from fastapi_jwt_auth import AuthJWT
@@ -16,14 +17,16 @@ def authorize():
 
 
 @pytest.fixture
-async def async_client() -> AsyncClient:
+async def async_client() -> AsyncGenerator[AsyncClient, None]:
     client = AsyncClient(app=app, base_url="http://test.by")
     yield client
     await client.aclose()
 
 
 @pytest.fixture
-async def auth_client(async_client, mocker, authorize) -> AsyncClient:
+async def auth_client(
+    async_client, mocker, authorize
+) -> AsyncGenerator[AsyncClient, None]:
     async def response(*args, **kwargs) -> VerificationUserSchema:
         return VerificationUserSchema(
             user_id=2,
@@ -47,7 +50,9 @@ async def auth_client(async_client, mocker, authorize) -> AsyncClient:
 
 
 @pytest.fixture
-async def auth_superuser_client(async_client, mocker, authorize) -> AsyncClient:
+async def auth_superuser_client(
+    async_client, mocker, authorize
+) -> AsyncGenerator[AsyncClient, None]:
     async def response(*args, **kwargs) -> VerificationUserSchema:
         return VerificationUserSchema(
             user_id=1,

@@ -1,7 +1,9 @@
+from typing import Any, AsyncGenerator
+
 import pytest
 from alembic import command
 from alembic.config import Config
-from sqlalchemy_utils import database_exists, create_database, drop_database
+from sqlalchemy_utils import create_database, database_exists, drop_database
 
 from app.infrastructure.database.db import db
 from settings import settings
@@ -15,7 +17,7 @@ pytest_plugins = [
 
 @pytest.mark.asyncio
 @pytest.fixture(autouse=True)
-async def create_db() -> None:
+async def create_db() -> AsyncGenerator[None, None]:
     await db.set_bind(
         db.config["dsn"],
         echo=db.config["echo"],
@@ -30,10 +32,10 @@ async def create_db() -> None:
     command.downgrade(alembic_config, "base")
 
 
-def pytest_configure(config):
+def pytest_configure(config: Any) -> None:
     if not database_exists(settings.DB_DSN):
         create_database(settings.DB_DSN)
 
 
-def pytest_unconfigure(config):
+def pytest_unconfigure(config: Any) -> None:
     drop_database(settings.DB_DSN)

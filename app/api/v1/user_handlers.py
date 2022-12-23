@@ -2,13 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-from app.api.deps import (
-    get_user_service,
-    get_authorized_superuser,
-    get_authorized_user,
-)
+from app.api.deps import get_authorized_superuser, get_authorized_user, get_user_service
 from app.domain.models.auth_user_claims import AuthUserClaims
-from app.domain.models.user_schemas import UserSchema, CreateUserModel
+from app.domain.models.user_schemas import CreateUserModel, UserSchema
 from app.domain.services.users_service import UserService
 from app.domain.types import UserId
 

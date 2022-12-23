@@ -11,3 +11,6 @@ uvicorn==0.14.0
 httpx==0.18.2
 sqlalchemy-utils==0.37.8
 asgi-lifespan==1.0.1
+mypy==0.991
+lxml==4.9.1
+isort==5.10.1

@@ -1,5 +1,4 @@
 from fastapi import Depends, HTTPException
-
 from fastapi_jwt_auth import AuthJWT
 
 from app.domain.deps import Services

@@ -9,5 +9,5 @@ class AuthSettings(BaseModel):
 
 
 @AuthJWT.load_config
-def get_config():
+def get_config() -> AuthSettings:
     return AuthSettings()

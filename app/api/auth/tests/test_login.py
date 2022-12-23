@@ -9,8 +9,8 @@ async def test_login_success(auth_client: AsyncClient):
     data: Dict[str, Any] = {"username": "test", "password": "test"}
     response = await auth_client.post("/login", json=data)
     assert response.status_code == 200
-    assert response.json()["access_token"]
-    assert response.json()["refresh_token"]
+    assert response.json()["accessToken"]
+    assert response.json()["refreshToken"]
 
 
 @pytest.mark.asyncio
@@ -22,4 +22,4 @@ async def test_invalid_login(
 ):
     data: Dict[str, Any] = {"username": login, "password": password}
     response = await async_client.post("/login", json=data)
-    assert response.status_code == 401
+    assert response.status_code == 422

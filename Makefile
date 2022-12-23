@@ -13,7 +13,6 @@ venv_init:
 	@if [ ! -f "$(VENV_DIR)" ]; then \
 		$(PYTHON) -m venv $(VENV_DIR) --prompt $(PROJECT); \
 	fi
-	cp .etc/default/sample_env .env
 	$(RUN) pip install pip-tools
 
 venv: venv_init install
@@ -31,16 +30,29 @@ install_no_dev:
 	$(PIP_S) .etc/packages
 init: venv
 
-lint: flake black
+lint: flake black mypy isort
 
 black:
-	$(RUN) black . --check
+	$(RUN) black --config pyproject.toml . --check
+
+black-fix:
+	$(RUN) black --config pyproject.toml .
 
 flake:
 	$(RUN) flake8 .
 
-fixcode:
-	$(RUN) black .
+mypy:
+	$(RUN) mypy .
+
+isort:
+	$(RUN) isort . --check --profile=black
+
+isort-fix:
+	$(RUN) isort . --profile=black
+
+fixcode: black-fix isort-fix
+	
+
 
 clean:
 	rm -rf $(VENV_DIR)

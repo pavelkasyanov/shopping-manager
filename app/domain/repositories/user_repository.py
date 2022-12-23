@@ -1,10 +1,7 @@
 from typing import List
 
-from app.domain.models.user_schemas import (
-    CreateUserModel,
-    BaseUserSchema,
-)
-from app.domain.types import UserId, NotFoundError
+from app.domain.models.user_schemas import BaseUserSchema, CreateUserModel
+from app.domain.types import NotFoundError, UserId
 from app.infrastructure.database.models.user import User
 
 

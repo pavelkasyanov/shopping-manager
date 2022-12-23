@@ -15,12 +15,12 @@
     
 </script>
 
-<div class="section columns">
+<div class="container py-4 px-3 mx-auto">
     <Router {url}>
         <nav>
             <Link to="/">Home</Link>
             <Link to="/users">Users</Link>
-          </nav>
+        </nav>
         <main class="column">
             <Route path="/">
                 <Redirect path="/home" />
@@ -32,3 +32,6 @@
         </main>
     </Router>
 </div>
+
+<style lang="scss">
+</style>

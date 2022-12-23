@@ -1,4 +1,5 @@
 from gino_starlette import Gino
+
 from settings import settings as config
 
 db = Gino(

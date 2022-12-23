@@ -1,7 +1,7 @@
 import pytest
 
 from app.domain.deps import Services
-from app.domain.models.user_schemas import CreateUserModel, BaseUserSchema
+from app.domain.models.user_schemas import BaseUserSchema, CreateUserModel
 from app.domain.services.users_service import UserService
 from app.domain.types import NotFoundError
 

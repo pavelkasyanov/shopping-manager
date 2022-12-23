@@ -1,10 +1,6 @@
 from typing import List
 
-from app.domain.models.user_schemas import (
-    CreateUserModel,
-    UserSchema,
-    VerificationUserSchema,
-)
+from app.domain.models.user_schemas import CreateUserModel, UserSchema, VerificationUserSchema
 from app.domain.repositories.user_repository import UserRepository
 from app.domain.types import UserId
 from app.infrastructure.database.models.user import User

@@ -1,7 +1,7 @@
 import pytest as pytest
 
 from app.domain.deps import Services
-from app.domain.models.user_schemas import CreateUserModel, BaseUserSchema
+from app.domain.models.user_schemas import BaseUserSchema, CreateUserModel
 from app.infrastructure.database.models.user import User
 
 

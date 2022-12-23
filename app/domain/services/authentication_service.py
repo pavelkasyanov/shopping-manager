@@ -4,6 +4,7 @@ from passlib.hash import pbkdf2_sha256
 
 from app.domain.models.user_schemas import VerificationUserSchema
 from app.domain.services.users_service import UserService
+from app.domain.types import VerificationFailError
 
 
 class AuthenticationService:
@@ -16,7 +17,7 @@ class AuthenticationService:
         current_user = await self._user_service.get_for_verification(login)
 
         if not pbkdf2_sha256.verify(passwd, current_user.password):
-            return None
+            raise VerificationFailError()
 
         return VerificationUserSchema.from_orm(current_user)
 
