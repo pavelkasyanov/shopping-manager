@@ -33,6 +33,7 @@ jobs:
       - name: test
         run: make test
         env:
+          DB_HOST: localhost
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
           DB_DATABASE: shopping-manager
           DB_USER: postgres
