@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page not found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .wrapper {
+            position: absolute;
+            top: 40%;
+            left: 45%;
+        }
+        .code {
+            font-size: 100px;
+            color: red;
+        }
+
+        .text {
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .btnBlock {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            margin-top: 20px;
+
+            width: 100px;
+            font-family: arial;
+            border-radius: 10px;
+            border-style: double;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="code">404</div>
+        <div class="text"><b>Not Found</b></div>
+        <div class="btnBlock"><button class="btn" onclick="onBtnClick()" href="/">Home</button></div>
+    </div>
+</body>
+<script>
+    function onBtnClick() {
+        window.location.href = '/';
+    }
+</script>
+</html>

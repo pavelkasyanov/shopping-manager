@@ -1,0 +1,22 @@
+insert into users(user_id,email,nickname,password,is_banned,is_superuser,created_date) values
+    (1, 'admin@admin.ru', 'admin', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, True, now()), 
+    (2, 'user_2@site.ru', 'user_2', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (3, 'user_3@site.ru', 'user_3', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (4, 'user_4@site.ru', 'user_4', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (5, 'user_5@site.ru', 'user_5', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (6, 'user_6@site.ru', 'user_6', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (7, 'user_7@site.ru', 'user_7', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (8, 'user_8@site.ru', 'user_8', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (9, 'user_9@site.ru', 'user_9', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (10, 'user_10@site.ru', 'user_10', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (11, 'user_11@site.ru', 'user_11', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (12, 'user_12@site.ru', 'user_12', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (13, 'user_13@site.ru', 'user_13', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (14, 'user_14@site.ru', 'user_14', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (15, 'user_15@site.ru', 'user_15', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (16, 'user_16@site.ru', 'user_16', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (17, 'user_17@site.ru', 'user_17', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (18, 'user_18@site.ru', 'user_18', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (19, 'user_19@site.ru', 'user_19', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()), 
+    (20, 'user_20@site.ru', 'user_20', '$pbkdf2-sha256$29000$9743xvj/n9Maw5gzplSqFQ$3VfcyZm97AKBI6vLOgQ484/c10ExouMeqAlv0b.kRmA', False, False, now()) 
+;

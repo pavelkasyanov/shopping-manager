@@ -1,4 +1,7 @@
 # Byte-compiled / optimized / DLL files
+
+.testcov
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -132,3 +135,17 @@ dmypy.json
 docker-compose-db.yml
 
 .idea/
+.vscode/launch.json
+
+frontend/node_modules/
+frontend/public/build/
+frontend/.DS_Store
+
+app/static/
+
+builds/
+
+.data/
+
+.artifacts/
+.vscode/

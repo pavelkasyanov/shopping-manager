@@ -1,7 +1,8 @@
 PROJECT = shopping-manager
+DB_NAME = shopping_manager
 SRC_DIR := app
 VENV_DIR = .venv
-PYTHON := python
+PYTHON := python3
 RUN := . $(VENV_DIR)/bin/activate;
 PY_TEST := $(RUN) pytest
 PIP_C := $(RUN) pip-compile
@@ -12,11 +13,11 @@ venv_init:
 	@if [ ! -f "$(VENV_DIR)" ]; then \
 		$(PYTHON) -m venv $(VENV_DIR) --prompt $(PROJECT); \
 	fi
-	cp .etc/default/simple_env .env
 	$(RUN) pip install pip-tools
 
 venv: venv_init install
 	$(RUN) pip install -r requirements.txt
+	mkdir -p app/static
 
 lock:
 	$(PIP_C) --output-file=.etc/packages .etc/requirements.in
@@ -29,20 +30,45 @@ install_no_dev:
 	$(PIP_S) .etc/packages
 init: venv
 
-lint: flake black
+lint: flake black mypy isort
 
 black:
-	$(RUN) black . --check
+	$(RUN) black --config pyproject.toml . --check
+
+black-fix:
+	$(RUN) black --config pyproject.toml .
 
 flake:
 	$(RUN) flake8 .
 
-fixcode:
-	$(RUN) black .
+mypy:
+	$(RUN) mypy .
+
+isort:
+	$(RUN) isort . --check --profile=black
+
+isort-fix:
+	$(RUN) isort . --profile=black
+
+fixcode: black-fix isort-fix
+	
+
 
 clean:
 	rm -rf $(VENV_DIR)
 	rm -rf .pytest_cache
 
-test: venv lint
-	$(PY_TEST) .
+force_test:
+	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
+
+test: force_test
+
+upgrade_db:
+	$(RUN) $(PYTHON) manage.py migrate
+
+downgrade_1_db:
+	$(RUN) $(PYTHON) manage.py downgrade
+
+create_migration:
+	$(RUN) $(PYTHON) manage.py migration --msg "$(msg)"
+
