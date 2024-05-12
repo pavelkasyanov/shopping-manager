@@ -1,4 +1,4 @@
-from fastapi import status, Response, Request
+from fastapi import Request, Response, status
 
 from app.templates import templates
 

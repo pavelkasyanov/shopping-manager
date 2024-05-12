@@ -17,13 +17,9 @@ from .views.views_router import views_router
 def get_app() -> FastAPI:
     application: FastAPI = FastAPI()
 
-    application.add_exception_handler(
-        AuthJWTException, authjwt_exception_handler
-    )
+    application.add_exception_handler(AuthJWTException, authjwt_exception_handler)
 
-    application.mount(
-        "/static", StaticFiles(directory="app/static"), name="static"
-    )
+    application.mount("/static", StaticFiles(directory="app/static"), name="static")
 
     application.include_router(views_router)
     application.include_router(auth_router)

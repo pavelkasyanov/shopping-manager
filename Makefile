@@ -61,10 +61,13 @@ clean:
 force_test:
 	$(PY_TEST) --cov-config=.coveragerc --cov=$(SRC_DIR) --cov-report html:.testcov
 
-test: lint force_test
+test: force_test
 
 upgrade_db:
 	$(RUN) $(PYTHON) manage.py migrate
+
+downgrade_1_db:
+	$(RUN) $(PYTHON) manage.py downgrade
 
 create_migration:
 	$(RUN) $(PYTHON) manage.py migration --msg "$(msg)"

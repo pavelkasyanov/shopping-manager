@@ -3,11 +3,16 @@ from fastapi_jwt_auth import AuthJWT
 
 from app.domain.deps import Services
 from app.domain.models.auth_user_claims import AuthUserClaims
+from app.domain.services.products_service import ProductsService
 from app.domain.services.users_service import UserService
 
 
 def get_user_service() -> UserService:
     return Services.user_service
+
+
+def get_products_service() -> ProductsService:
+    return Services.products_service
 
 
 async def get_authorized_user(authorize: AuthJWT = Depends()) -> AuthUserClaims:

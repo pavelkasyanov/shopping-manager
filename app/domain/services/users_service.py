@@ -39,6 +39,4 @@ class UserService:
         current_user = await self._user_repository.get_by_id(user_id)
         current_schema = UserSchema.from_orm(current_user)
         current_schema.is_banned = status
-        await self._user_repository.update(
-            current_user, new_user=current_schema
-        )
+        await self._user_repository.update(current_user, new_user=current_schema)

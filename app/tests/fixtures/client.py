@@ -24,9 +24,7 @@ async def async_client() -> AsyncGenerator[AsyncClient, None]:
 
 
 @pytest.fixture
-async def auth_client(
-    async_client, mocker, authorize
-) -> AsyncGenerator[AsyncClient, None]:
+async def auth_client(async_client, mocker, authorize) -> AsyncGenerator[AsyncClient, None]:
     async def response(*args, **kwargs) -> VerificationUserSchema:
         return VerificationUserSchema(
             user_id=2,
@@ -37,22 +35,16 @@ async def auth_client(
             is_superuser=False,
         )
 
-    mocker.patch.object(
-        AuthenticationService, "verify_user", side_effect=response
-    )
+    mocker.patch.object(AuthenticationService, "verify_user", side_effect=response)
     user_claims = AuthUserClaims(user_id=2, is_superuser=False).dict()
-    access_token = authorize.create_access_token(
-        "test@test.com", user_claims=user_claims
-    )
+    access_token = authorize.create_access_token("test@test.com", user_claims=user_claims)
     async_client.headers["Authorization"] = f"Bearer {access_token}"
 
     yield async_client
 
 
 @pytest.fixture
-async def auth_superuser_client(
-    async_client, mocker, authorize
-) -> AsyncGenerator[AsyncClient, None]:
+async def auth_superuser_client(async_client, mocker, authorize) -> AsyncGenerator[AsyncClient, None]:
     async def response(*args, **kwargs) -> VerificationUserSchema:
         return VerificationUserSchema(
             user_id=1,
@@ -63,14 +55,10 @@ async def auth_superuser_client(
             is_superuser=True,
         )
 
-    mocker.patch.object(
-        AuthenticationService, "verify_user", side_effect=response
-    )
+    mocker.patch.object(AuthenticationService, "verify_user", side_effect=response)
 
     user_claims = AuthUserClaims(user_id=1, is_superuser=True).dict()
-    access_token = authorize.create_access_token(
-        "test@test.com", user_claims=user_claims
-    )
+    access_token = authorize.create_access_token("test@test.com", user_claims=user_claims)
     async_client.headers["Authorization"] = f"Bearer {access_token}"
 
     yield async_client

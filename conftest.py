@@ -10,9 +10,7 @@ from settings import settings
 
 alembic_config = Config("alembic.ini")
 
-pytest_plugins = [
-    "app.tests.fixtures.client",
-]
+pytest_plugins = ["app.tests.fixtures.client", "app.domain.repositories.tests.fixtures"]
 
 
 @pytest.mark.asyncio

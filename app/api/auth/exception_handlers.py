@@ -1,4 +1,4 @@
-from fastapi import status, Response
+from fastapi import Response, status
 from fastapi_jwt_auth.exceptions import AuthJWTException
 from starlette.requests import Request
 from starlette.responses import JSONResponse, RedirectResponse

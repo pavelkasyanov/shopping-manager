@@ -9,22 +9,16 @@ from app.domain.types import NotFoundError
 
 
 @pytest.mark.asyncio
-async def test_get_all_users_not_authorized(
-    async_client: AsyncClient, mocker
-) -> None:
+async def test_get_all_users_not_authorized(async_client: AsyncClient, mocker) -> None:
     mocker.patch.object(UserService, "get_all", return_value=[])
 
-    response = await async_client.get(
-        "/api/v1/users/all", headers={"Content-Type": "application/json"}
-    )
+    response = await async_client.get("/api/v1/users/all", headers={"Content-Type": "application/json"})
 
     assert response.status_code == 401
 
 
 @pytest.mark.asyncio
-async def test_get_all_users_forbidden(
-    auth_client: AsyncClient, mocker
-) -> None:
+async def test_get_all_users_forbidden(auth_client: AsyncClient, mocker) -> None:
     mocker.patch.object(UserService, "get_all", return_value=[])
 
     response = await auth_client.get("/api/v1/users/all")
@@ -33,9 +27,7 @@ async def test_get_all_users_forbidden(
 
 
 @pytest.mark.asyncio
-async def test_get_all_users_success(
-    auth_superuser_client: AsyncClient, mocker
-) -> None:
+async def test_get_all_users_success(auth_superuser_client: AsyncClient, mocker) -> None:
     mocker.patch.object(
         UserService,
         "get_all",
@@ -63,9 +55,7 @@ async def test_get_all_users_success(
 
 
 @pytest.mark.asyncio
-async def test_get_user_by_id_success(
-    auth_superuser_client: AsyncClient, mocker
-) -> None:
+async def test_get_user_by_id_success(auth_superuser_client: AsyncClient, mocker) -> None:
     mocker.patch.object(
         UserService,
         "get_by_id",
@@ -91,9 +81,7 @@ async def test_get_user_by_id_success(
 
 
 @pytest.mark.asyncio
-async def test_get_user_by_id_not_found_error(
-    auth_superuser_client: AsyncClient, mocker
-) -> None:
+async def test_get_user_by_id_not_found_error(auth_superuser_client: AsyncClient, mocker) -> None:
     async def response(user_id) -> None:
         raise NotFoundError()
 

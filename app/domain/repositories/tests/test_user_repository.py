@@ -11,9 +11,7 @@ async def create_user(
     password: str = "passwd",
 ) -> User:
     repo = Services.user_repository
-    user_model = CreateUserModel(
-        nickname=nickname, email=email, password=password
-    )
+    user_model = CreateUserModel(nickname=nickname, email=email, password=password)
     return await repo.create(user_model)
 
 

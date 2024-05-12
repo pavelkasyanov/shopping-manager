@@ -21,20 +21,14 @@ logger = logging.getLogger(__file__)
 async def login(
     auth_user: AuthUser,
     authorize: AuthJWT = Depends(),
-    authentication_service: AuthenticationService = Depends(
-        get_authentication_service
-    ),
+    authentication_service: AuthenticationService = Depends(get_authentication_service),
 ) -> JSONResponse:
     try:
-        current_user = await authentication_service.verify_user(
-            auth_user.username, auth_user.password
-        )
+        current_user = await authentication_service.verify_user(auth_user.username, auth_user.password)
         if not current_user:
             raise Exception()
 
-        user_claims = AuthUserClaims(
-            user_id=current_user.user_id, is_superuser=current_user.is_superuser
-        ).dict()
+        user_claims = AuthUserClaims(user_id=current_user.user_id, is_superuser=current_user.is_superuser).dict()
         access_token: str = authorize.create_access_token(
             subject=auth_user.username, user_claims=user_claims, expires_time=settings.ACCESS_TOKEN_EXPIRED
         )

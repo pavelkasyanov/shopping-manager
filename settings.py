@@ -26,9 +26,7 @@ class AppSettings:
         self.DB_POOL_MIN_SIZE = config("DB_POOL_MIN_SIZE", cast=int, default=1)
         self.DB_POOL_MAX_SIZE = config("DB_POOL_MAX_SIZE", cast=int, default=16)
         self.DB_RETRY_LIMIT = config("DB_RETRY_LIMIT", cast=int, default=16)
-        self.DB_RETRY_INTERVAL = config(
-            "DB_RETRY_INTERVAL", cast=int, default=1
-        )
+        self.DB_RETRY_INTERVAL = config("DB_RETRY_INTERVAL", cast=int, default=1)
         self.DB_DSN = config(
             "DB_DSN",
             cast=make_url,

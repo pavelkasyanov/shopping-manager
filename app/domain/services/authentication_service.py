@@ -11,9 +11,7 @@ class AuthenticationService:
     def __init__(self, user_service: UserService):
         self._user_service = user_service
 
-    async def verify_user(
-        self, login: str, passwd: str
-    ) -> Union[VerificationUserSchema, None]:
+    async def verify_user(self, login: str, passwd: str) -> Union[VerificationUserSchema, None]:
         current_user = await self._user_service.get_for_verification(login)
 
         if not pbkdf2_sha256.verify(passwd, current_user.password):

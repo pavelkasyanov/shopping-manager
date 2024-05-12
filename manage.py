@@ -7,7 +7,7 @@ from app.app import app  # noqa: ignore
 
 
 @click.group()
-def cli() ->None:
+def cli() -> None:
     pass
 
 
@@ -20,9 +20,7 @@ def cli() ->None:
     help="host",
     show_default=True,
 )
-@click.option(
-    "-p", "--port", type=int, default=8000, help="port", show_default=True
-)
+@click.option("-p", "--port", type=int, default=8000, help="port", show_default=True)
 @click.option(
     "-d",
     "--debug",
@@ -53,6 +51,11 @@ def runserver(host: str, port: int, debug: bool, reload: bool) -> None:
 @cli.command(help="apply migration")
 def migrate() -> int:
     return subprocess.call(["alembic", "upgrade", "head"])  # nosec
+
+
+@cli.command(help="downgrade migration")
+def downgrade() -> int:
+    return subprocess.call(["alembic", "downgrade", "-1"])  # nosec
 
 
 @cli.command(help="Make migration")

@@ -9,11 +9,25 @@ Product:
 ProductSubType: # Подтип продукта
 - product_sub_type_id: uuid;
 - name: str;
-product_type_id: uuid;
+- remark: str; # примечание
+- product_type_id: uuid;
 
 ProductType: #Тип продукта
+- product_type_id: uuid;
 - sub_type_id: uuid;
 - name: str;
+- remark: str; # примечание
+
+Purchase: # покупка
+- purchase_id: uuid;
+- user_id: uuid;
+- purchase_date: datetime;
+- cashbox_number: int; # номер кассы
+- cashier_name: str; # имя кассира
+- total_amount: float; # Итого
+- discount_amount: float; # сумма скидки
+- without_discount_amount: float; Сумма без скидки
+- receipt: bytes: # скрин чека
 
 ProductToBuy: # продукт для покупки:
 - product_to_byu_id: uuid;
@@ -22,15 +36,3 @@ ProductToBuy: # продукт для покупки:
 - unit_price_with_discount: float # цена за единицу со скидкой
 - product_id: uuid;
 - purchase_id: uuid;
-
-Purchase: # покупка
-- id: uuid;
-user_id: uuid;
-date: datetime;
-cashbox_number: int; # номер кассы
-cashier_name: str; # имя кассира
-total_amount: float; # Итого
-discount_amount: float; # сумма скидки
-without_discount_amount: float; Сумма без скидки
-
-receipt: bytes: # скрин чека

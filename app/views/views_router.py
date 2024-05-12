@@ -13,9 +13,7 @@ logger = logging.getLogger(__file__)
 @views_router.get("/")
 @views_router.get("/signin")
 async def index(request: Request) -> Response:
-    return templates.TemplateResponse(
-        "index.html", context={"request": request}
-    )
+    return templates.TemplateResponse("index.html", context={"request": request})
 
 
 @views_router.get("/home")
@@ -24,6 +22,4 @@ def home(request: Request, Authorize: AuthJWT = Depends()) -> Response:
 
     # Authorize.jwt_required()
 
-    return templates.TemplateResponse(
-        "index.html", context={"request": request}
-    )
+    return templates.TemplateResponse("index.html", context={"request": request})
