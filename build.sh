@@ -24,7 +24,7 @@ echo 'Start make package...'
 
 echo 'Start create directories...'
 
-OUT_DIR_BASE=builds
+OUT_DIR_BASE=.builds
 if [ -d "$OUT_DIR_BASE" ];
 then
     echo "$OUT_DIR_BASE directory exists."
