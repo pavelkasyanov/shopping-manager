@@ -146,3 +146,6 @@ app/static/
 builds/
 
 .data/
+
+.artifacts/
+.vscode/
